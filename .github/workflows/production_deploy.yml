@@ -23,8 +23,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 17.x
-      - run: npm install
-      - run: npm run build:prod --if-present
+      - run: npm
+      - run: npm ci
+      - run: npm run dev
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
