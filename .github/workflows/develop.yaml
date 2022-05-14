@@ -26,4 +26,4 @@ jobs:
         with:
           node-version: 17.x
       - run: npm
-      - run: npm ci
+      - run: npm run build:prod
