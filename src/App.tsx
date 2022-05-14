@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Button } from "./common/components";
 import { Checkbox } from "./common/components";
 
@@ -8,6 +9,8 @@ function clickMe() {
 }
 
 export function App() {
+    const [checked, setChecked] = useState(false);
+    
     return (
         <div>
             <h1>Hello! Urodaga here</h1>
@@ -15,7 +18,7 @@ export function App() {
                 Click me!
             </Button>
             <div>
-                <Checkbox id={"aaaa"} label={"asdsd"} />
+                <Checkbox label={"asdsd"} checked={checked} onChecked={setChecked} />
             </div>
         </div>
     );

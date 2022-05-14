@@ -1,20 +1,24 @@
 import * as React from 'react';
 
 export interface CheckboxProps {
-  id: string;
-  label: string;
+    label: string;
+    checked?: boolean;
+    onChecked?: (checked: boolean) => void;
 }
 
 export function Checkbox(props: CheckboxProps) {
-  const [checked, setChecked] = React.useState(true);
+    const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (props.onChecked)
+            props.onChecked(e.target.checked);
+    };
 
-  return (
-    <label htmlFor={props.id}>
-      <input type="checkbox"
-        defaultChecked={checked}
-        onChange={() => setChecked(!checked)}
-      />
-      {props.label}
-    </label>
-  );
+    return (
+        <label>
+            <input type="checkbox"
+                checked={props.checked || false}
+                onChange={handleChecked}
+            />
+            {props.label}
+        </label>
+    );
 }
