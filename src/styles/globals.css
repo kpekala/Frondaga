@@ -4,3 +4,7 @@ body {
     font-family: 'Koulen', cursive;
     font-family: 'Roboto Slab', serif;
 }
+
+html {
+    font-size: 30px;
+}
