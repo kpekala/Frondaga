@@ -5,6 +5,10 @@ It is recommended to clone the parent repository instead. Once you do, go into t
 project directory 'Frondaga', and run the following:
 
 ```bash
+# Initialising this repo as a submodule
+git submodule init
+git submodule update
+
 # Installing dependencies
 npm install
 ```
