@@ -1,0 +1,26 @@
+.MenuView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 80%;
+    width: 100%;
+}
+
+.logo {
+    font-size: 5em;
+}
+
+.letterI {color: #00b2ff;}
+.letterO {color: #ffb800;}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 20%;
+    width: 100%;
+}
