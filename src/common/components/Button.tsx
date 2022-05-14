@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Button.css'
 
 export interface ButtonProps {
     onClick: (event: React.MouseEvent) => void;
@@ -7,7 +8,7 @@ export interface ButtonProps {
 
 export function Button(props: ButtonProps) {
     return (
-        <button onClick={props.onClick}>
+        <button className='Button' onClick={props.onClick}>
             {props.children}
         </button>
     );
