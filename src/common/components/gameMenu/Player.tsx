@@ -11,7 +11,7 @@ export function Player(props: PlayerProps) {
     return (
         <div className='Player'>
             <div style={{ color: props.color}} className='NameLabel'>{props.playerName}</div>
-            <div style={{ color: props.color}} >{props.points}</div>
+            <div className='CounterLabel' >{props.points}</div>
         </div>
     );
 }
