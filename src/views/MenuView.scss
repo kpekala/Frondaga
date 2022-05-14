@@ -1,6 +1,6 @@
 .MenuView {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1 1 1 1;
     justify-content: center;
     align-items: center;
 
@@ -9,6 +9,7 @@
 }
 
 .logo {
+    margin: auto;
     font-size: 5em;
 }
 

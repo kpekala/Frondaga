@@ -9,7 +9,7 @@ function clickMe() {
 export function App() {
     return (
         <div>
-            <MenuView>dupa</MenuView>
+            <MenuView></MenuView>
         </div>
     );
 }

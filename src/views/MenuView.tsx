@@ -9,7 +9,7 @@ export interface MenuViewProps {
     children: React.ReactNode;
 }
 
-export function MenuView(props: MenuViewProps) {
+export function MenuView() {
     return (
         <View>
             <div className='MenuView'>
