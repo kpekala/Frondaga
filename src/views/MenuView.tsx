@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from "../common/components";
+import { MenuButton } from "./MenuButton";
 import { View } from "./View";
 
 import './MenuView.scss';
@@ -15,9 +15,9 @@ export function MenuView() {
             <div className='MenuView'>
                 <span className='logo'>szewc.<span className='letterI'>i</span><span className='letterO'>o</span></span>
                 <div className='buttonContainer'>
-                    <Button onClick={() => null}> Graj sam </Button>
-                    <Button onClick={() => null}> Graj z innymi </Button>
-                    <Button onClick={() => null}> Opcje </Button>
+                    <MenuButton onClick={() => null}> Graj sam </MenuButton>
+                    <MenuButton onClick={() => null}> Graj z innymi </MenuButton>
+                    <MenuButton onClick={() => null}> Opcje </MenuButton>
                 </div>
             </div>
         </View>
