@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button } from "./common/components";
-import { Game } from './components';
+import { GameView } from './views';
+
 
 function clickMe() {
     console.log("Button is clicked");
@@ -8,6 +9,6 @@ function clickMe() {
 
 export function App() {
     return (
-        <Game/>
+        <GameView />
     );
 }
