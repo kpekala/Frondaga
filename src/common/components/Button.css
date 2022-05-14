@@ -1,3 +1,10 @@
-.Button{
-    
+.Button {
+    width: 70vw;
+    height: 3em;
+
+    margin: 10px 0;
+
+    font-size: 2em;
+
+    border: 2px solid black;
 }
