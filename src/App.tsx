@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Button } from "./common/components";
+import { Checkbox } from "./common/components";
+
 
 function clickMe() {
     console.log("Button is clicked");
@@ -12,6 +14,9 @@ export function App() {
             <Button onClick={clickMe}>
                 Click me!
             </Button>
+            <div>
+                <Checkbox id={"aaaa"} label={"asdsd"} />
+            </div>
         </div>
     );
 }
