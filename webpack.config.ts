@@ -73,7 +73,7 @@ module.exports = {
             },
             {
                 test: /^(?!.*?\.module).*\.(scss|css)$/,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(jpg|png|svg|ico|icns|glb)$/,

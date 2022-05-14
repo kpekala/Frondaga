@@ -1,0 +1,14 @@
+.UserLineInput {
+    position: absolute;
+    
+    .UserLineInput__dot-cursor {
+        /* Form */
+        width: 0.2rem;
+        height: 0.2rem;        
+        transform: translate(-50%, -50%);
+
+        /* Look */
+        background-color: black;
+        border-radius: 50%;
+    }
+}
