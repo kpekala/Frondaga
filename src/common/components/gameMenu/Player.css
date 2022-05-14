@@ -1,3 +1,11 @@
 .Player {
-  
+
+}
+
+.Player * {
+  display: inline-block;
+}
+
+.NameLabel {
+  padding-right: 1rem;
 }

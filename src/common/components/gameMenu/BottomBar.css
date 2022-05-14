@@ -1,7 +1,11 @@
 .BottomBar {
   width: 100%;
-  height: auto;
+  height: 5rem;
   padding: 1rem;
   background-color: black;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
