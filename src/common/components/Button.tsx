@@ -1,13 +1,14 @@
 import * as React from 'react';
 
-interface ButtonProps {
+export interface ButtonProps {
     onClick: (event: React.MouseEvent) => void;
+    children: React.ReactNode;
 }
 
-export default function Button(props: ButtonProps) {
+export function Button(props: ButtonProps) {
     return (
         <button onClick={props.onClick}>
-            Click me!
+            {props.children}
         </button>
     );
 }
