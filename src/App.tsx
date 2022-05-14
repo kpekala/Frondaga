@@ -9,13 +9,7 @@ function clickMe() {
 export function App() {
     return (
         <div>
-            <h1>Hello! Urodaga here</h1>
-            <Button onClick={clickMe}>
-                Click me!
-            </Button>
-
             <MenuView>dupa</MenuView>
-            
         </div>
     );
 }

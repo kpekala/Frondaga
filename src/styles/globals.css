@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Koulen&family=Roboto+Slab:wght@200;500&display=swap');
 
 body {
-    background-color: red;
-    
     font-family: 'Koulen', cursive;
     font-family: 'Roboto Slab', serif;
 }
