@@ -1,14 +1,14 @@
 import * as React from 'react';
-import "./Button.scss"
+import "./MenuButton.scss"
 
-export interface ButtonProps {
+export interface MenuButtonProps {
     onClick: (event: React.MouseEvent) => void;
     children: React.ReactNode;
 }
 
-export function Button(props: ButtonProps) {
+export function MenuButton(props: MenuButtonProps) {
     return (
-        <button className='Button' onClick={props.onClick}>
+        <button className='MenuButton' onClick={props.onClick}>
             {props.children}
         </button>
     );

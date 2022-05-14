@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Button } from "./common/components";
+import { MenuView } from "./views";
 import { GameView } from './views';
 import { Checkbox } from "./common/components";
 
@@ -15,6 +16,7 @@ export function App() {
     return (
         <div>
             <h1>Hello! Urodaga here</h1>
+            <MenuView />
             <GameView />
             <Button onClick={clickMe}>
                 Click me!

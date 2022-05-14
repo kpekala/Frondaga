@@ -1,12 +1,10 @@
-html { 
-    height:100%;
-    font-size: 30px; 
+@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Roboto+Slab:wght@200;500&display=swap');
+
+body {
+    font-family: 'Koulen', cursive;
+    font-family: 'Roboto Slab', serif;
 }
-body { 
-    position:absolute; 
-    top:0; bottom:0; right:0; left:0; 
-    background-color: rgb(100, 100, 100);
-}
-#app{
-    height: 100%;
+
+html {
+    font-size: 30px;
 }
