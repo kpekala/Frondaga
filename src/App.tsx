@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { MenuView } from './views';
-
 import { LoginView } from './views/LoginView';
 
 enum View {
