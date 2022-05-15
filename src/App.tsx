@@ -1,16 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Button } from "./common/components";
-import { MenuView } from "./views";
-import { GameView } from './views';
-import { Checkbox } from "./common/components";
-import { AnswerButton } from './views/AnswerButton';
-import { PopUp } from './views/PopUp';
-import { Quiz } from './views/Quiz';
+import { MenuView } from './views';
+import { LoginView } from './views/LoginView';
 
-
-function clickMe() {
-    console.log("Button is clicked");
+enum View {
+    LOGIN,
+    MENU,
+    GAME
 }
 
 function onClick(answer: string){
@@ -18,22 +14,24 @@ function onClick(answer: string){
 }
 
 export function App() {
-    const [checked, setChecked] = useState(false);
-    
-    return (
-        <div>
-            {/* <h1>Hello! Urodaga here</h1> */}
-            {/* <MenuView /> */}
-            {/* <GameView /> */}
-            {/* <Button onClick={clickMe}>
-                Click me!
-            </Button> */}
-            {/* <div>
-                <Checkbox label={"asdsd"} checked={checked} onChecked={setChecked} />
-            </div> */}
-            <PopUp>
-                <Quiz question='Ile mam lat' answers={["1", "10", "21", "1000"]} onClick = {onClick}/>
-            </PopUp>
-        </div>
-    );
+    const [view, setView] = useState(View.LOGIN);
+
+    switch (view) {
+        case View.LOGIN:
+            return (
+            <div>
+                <LoginView
+                    onLogIn={() => setView(View.MENU)}
+                ></LoginView>
+            </div>);
+
+        case View.MENU:
+            return (
+                <div>
+                    <MenuView></MenuView>
+                </div>);
+        
+        default:
+            return (<></>);
+    }
 }
