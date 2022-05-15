@@ -1,0 +1,40 @@
+.PlayPopUp {
+    background-color: #474747ad;
+
+    position: absolute;
+
+    width: 100vw;
+    height: 100vh;
+
+    left: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.playPopUpInnerContainer {
+    position: relative;
+
+    background-color: white;
+
+    border-radius: 20px;
+
+    width: 70%;
+    height: 70%;
+}
+
+.escapeButton {
+    position: relative;
+
+    margin-left: auto;
+    right: 10px;
+    top: 10px;
+
+    width: 20px;
+    height: 20px;
+
+    background-color: red;
+}
