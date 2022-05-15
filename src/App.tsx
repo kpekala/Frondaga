@@ -15,15 +15,15 @@ export function App() {
     
     return (
         <div>
-            <h1>Hello! Urodaga here</h1>
-            <MenuView />
-            <GameView />
-            <Button onClick={clickMe}>
+            {/* <h1>Hello! Urodaga here</h1> */}
+            {/* <MenuView /> */}
+            {/* <GameView /> */}
+            {/* <Button onClick={clickMe}>
                 Click me!
-            </Button>
-            <div>
+            </Button> */}
+            {/* <div>
                 <Checkbox label={"asdsd"} checked={checked} onChecked={setChecked} />
-            </div>
+            </div> */}
         </div>
     );
 }
