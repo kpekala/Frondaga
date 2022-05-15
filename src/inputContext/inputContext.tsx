@@ -65,10 +65,6 @@ export function InputContextProvider(props: { children: React.ReactNode|React.Re
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, [rows, cols, cellSize]);
 
-    useEffect(() => {
-        console.log(cursorPosition);
-    }, [cursorPosition]);
-
     return (
         <InputContext.Provider value={{
             setGrid,

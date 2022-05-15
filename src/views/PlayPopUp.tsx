@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MenuButton } from './MenuButton';
 import { TextInput } from './TextInput';
 import { PopUp } from '../common/components/PopUp';
-import './PlayPopUp.scss';
+import './PlayPopUp.scss'
 
 export interface PlayPopUpProps {
     onClose?: () => void;

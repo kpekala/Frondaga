@@ -1,0 +1,20 @@
+.EdgeVisual {
+    --EdgeVisual__line-thickness: 4px;
+
+    position: absolute;
+
+    width: var(--EdgeVisual__line-thickness, 0.1rem);
+    height: var(--EdgeVisual__line-thickness, 0.1rem);
+    background-color: black;
+    border-radius: calc(var(--EdgeVisual__line-thickness, 0.1rem) / 2);
+
+    &--right {
+        margin-top: calc(var(--EdgeVisual__line-thickness, 0.1rem) / -2);
+        width: var(--cell-size, 10px);
+    }
+
+    &--down {
+        margin-left: calc(var(--EdgeVisual__line-thickness, 0.1rem) / -2);
+        height: var(--cell-size, 10px);
+    }
+}

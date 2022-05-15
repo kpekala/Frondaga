@@ -22,7 +22,7 @@ export function UserInputTestingView() {
                 ['--cell-size' as any]: `${grid?.cellSize || 10}px`,
             }}>
                 <Grid cellSize={grid?.cellSize || 60} cols={grid?.cols || 0} rows={grid?.rows || 0} />
-                <UserLineInput />
+                <UserLineInput position={null} />
             </div>
         </div>
     );

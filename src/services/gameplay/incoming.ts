@@ -1,7 +1,8 @@
 import { Player as Player } from './types';
 
 export interface InitialGameState {
-    some: number;
+    order: number[];
+    current_player: number;
 }
 
 export interface PlayerListMessage {
@@ -16,9 +17,10 @@ export interface RulesMessage {
     move_timeout: number;
 }
 
-export interface RoomCreatedMessage {
+export interface TokenMessage {
     type: 'TOKEN';
     token: string;
+    user_id: number;
 }
 
 export interface PlayerJoinedMessage {
@@ -36,4 +38,19 @@ export interface GameCancelledMessage {
 
 export interface AcceptGameMessage {
     type: 'START';
+}
+
+export interface Move {
+    start_point: { x: number, y: number };
+    end_point: { x: number, y: number };
+    user: number;
+}
+
+export interface ActionMessage {
+    move?: Move;
+    field?: { point: {x: number, y: number}[] }
+    order: {
+        order: number[];
+        current_player: number;
+    };
 }

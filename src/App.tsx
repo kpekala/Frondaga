@@ -16,7 +16,14 @@ enum View {
 export function MenuTest() {
     GameplayService.setUsername(`bruh-${Math.random()}`);
     
-    return <MenuView />;
+    return <MenuView startGame={() => alert('Bruh')} />;
+}
+
+export function GameTest() {
+    GameplayService.setUsername(`bruh-${Math.random()}`);
+    
+    
+    return <GameView />;
 }
 
 export function App() {
@@ -29,7 +36,7 @@ export function App() {
             ></LoginView>
         ),
         [View.MENU]: () => (
-            <MenuView></MenuView>
+            <MenuView startGame={() => setView(View.GAME)} />
         ),
         [View.GAME]: () => (
             <GameView />

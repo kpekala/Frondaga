@@ -1,23 +1,27 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MenuButton } from "./MenuButton";
 import { View } from "./View";
 import { PlayPopUp } from './PlayPopUp';
+import { TutorialPopUp } from './TutorialPopUp';
 import { GameplayService, Player } from '../services/gameplay';
 
 import './MenuView.scss';
-import { GameCancelledMessage, GameStartedMessage, PlayerListMessage } from '../services/gameplay/incoming';
 import { GeneralPopUp } from '../common/components/GeneralPopUp';
+import { Button } from '../common';
+import { Logger } from '../log';
 
 export interface MenuViewProps {
-    children: React.ReactNode;
+    startGame(): void;
 }
 
-type PopUpType = 'local' | 'net' | 'options' | 'waitingForGame';
+type PopUpType = 'local' | 'net' | 'options' | 'waitingForGame' | 'rules';
 
-export function MenuView() {
+export function MenuView(props: MenuViewProps) {
     const [popUp, setPopUp] = useState<PopUpType|null>(null);
     const [players, setPlayers] = useState<Player[]>([]);
+    const [amIHost, setAmIHost] = useState(false);
+    const [roomToken, setRoomToken] = useState<string>('');
 
     const popUpMap: Record<PopUpType, () => React.ReactNode> = {
         'local': () => (
@@ -34,68 +38,57 @@ export function MenuView() {
                 onJoin={joinRoom}
             ></PlayPopUp>
         ),
+        'rules': () => (
+            <TutorialPopUp
+                onClose={() => setPopUp(null)}
+            ></TutorialPopUp>
+        ),
         options: () => <></>,
         waitingForGame: () => (
             <GeneralPopUp blockBackground style={{
                 minWidth: '70vw',
                 minHeight: '70vh',
             }}>
+                <h4 style={{ textAlign: 'center' }}>{roomToken}</h4>
                 <h2>Gracze:</h2>
                 <ol>
                     {players.map(player => <li>{player.name}</li>)}
                 </ol>
+                {amIHost && <Button onClick={() => {
+                    GameplayService.startGame();
+                }}>Rozpocznik</Button>}
             </GeneralPopUp>
         )
     };
 
     async function createNewRoom() {
         const token = await GameplayService.createRoom();
+        setAmIHost(true);
 
-        alert(token);
+        setRoomToken(token.roomToken);
         setPopUp('waitingForGame');
-
-        let isWaiting = true;
-        while (isWaiting) {
-            const message = await GameplayService.getMessage<PlayerListMessage|GameStartedMessage|GameCancelledMessage>();
-
-            switch(message.type) {
-                case 'PLAYER_LIST':
-                    setPlayers(message.players);
-                    break;
-
-                case 'START':
-                    isWaiting = false;
-                    break;
-            }
-        }
     }
 
     async function joinRoom(token: string) {
-        const response = await GameplayService.joinRoom(token);
-        setPlayers(response.players);
+        await GameplayService.joinRoom(token);
         setPopUp('waitingForGame');
 
-        // Populating the local users list, probably returned by useState
-
-        let isWaiting = true;
-        while (isWaiting) {
-            const message = await GameplayService.getMessage<PlayerListMessage|GameStartedMessage|GameCancelledMessage>();
-
-            switch(message.type) {
-                case 'PLAYER_LIST':
-                    setPlayers(message.players);
-                    break;
-
-                case 'START':
-                    isWaiting = false;
-                    break;
-
-                case 'QUIT':
-                    isWaiting = false;
-                    break;
-            }
-        }
+        setRoomToken(token);
     }
+
+    useEffect(() => {
+        const removeHandler = GameplayService.subscribeToPlayers(setPlayers);
+        return () => removeHandler();
+    }, []);
+
+    useEffect(() => {
+        const removeHandler = GameplayService.subscribeToMode((mode) => {
+            Logger.info(`Switched to mode ${mode}`);
+
+            props.startGame();
+        });
+        return () => removeHandler();
+    }, []);
 
     return (
         <View>
@@ -105,6 +98,7 @@ export function MenuView() {
                     <MenuButton onClick={() => setPopUp('local')}> Graj lokalnie </MenuButton>
                     <MenuButton onClick={() => setPopUp('net')}> Graj przez sieć </MenuButton>
                     <MenuButton onClick={() => setPopUp('options')}> Opcje </MenuButton>
+                    <MenuButton onClick={() => setPopUp('rules')}> Zasady </MenuButton>
                 </div>
             </div>
             {popUp && popUpMap[popUp]()}
