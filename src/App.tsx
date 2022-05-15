@@ -4,6 +4,7 @@ import { Button } from "./common/components";
 import { MenuView } from "./views";
 import { GameView } from './views';
 import { Checkbox } from "./common/components";
+import { PopUp } from './views/PopUp';
 
 
 function clickMe() {
@@ -24,6 +25,9 @@ export function App() {
             {/* <div>
                 <Checkbox label={"asdsd"} checked={checked} onChecked={setChecked} />
             </div> */}
+            {<PopUp>
+                Lorep Pimpsum 
+            </PopUp>}
         </div>
     );
 }
