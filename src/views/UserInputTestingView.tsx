@@ -4,10 +4,17 @@ import * as React from 'react';
 import { UserLineInput } from '../userLineInput/UserLineInput';
 import { Grid } from '../grid/Grid';
 import { useInputContext } from '../inputContext/inputContext';
+import { useEffect } from 'react';
+import { GameplayService } from '../services/gameplayService';
 
 
 export function UserInputTestingView() {
     const {grid} = useInputContext();
+
+    useEffect(() => {
+        GameplayService.setUsername('the-player');
+        GameplayService.createRoom();
+    }, []);
 
     return (
         <div className='UserInputTestingView'>
