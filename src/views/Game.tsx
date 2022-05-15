@@ -1,7 +1,7 @@
 import './Game.css'
 
 import * as React from 'react';
-import { Grid } from '../grid/Grid';
+import { Grid } from './Grid';
 
 
 export function GameView() {

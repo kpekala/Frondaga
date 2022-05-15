@@ -1,18 +1,34 @@
 import * as React from 'react';
-import { InputContextProvider } from './inputContext/inputContext';
-import { UserInputTestingView } from './views/UserInputTestingView';
 
+import { useState } from 'react';
+import { MenuView } from './views';
+import { LoginView } from './views/LoginView';
+
+enum View {
+    LOGIN,
+    MENU,
+    GAME
+}
 
 export function App() {
-    return (
-        <div>
-            {/* <h1>Hello! Urodaga here</h1>
-            <Button onClick={clickMe}>
-                Click me!
-            </Button> */}
-            <InputContextProvider>
-                <UserInputTestingView />
-            </InputContextProvider>
-        </div>
-    );
+    const [view, setView] = useState(View.LOGIN);
+
+    switch (view) {
+        case View.LOGIN:
+            return (
+            <div>
+                <LoginView
+                    onLogIn={() => setView(View.MENU)}
+                ></LoginView>
+            </div>);
+
+        case View.MENU:
+            return (
+                <div>
+                    <MenuView></MenuView>
+                </div>);
+        
+        default:
+            return (<></>);
+    }
 }
