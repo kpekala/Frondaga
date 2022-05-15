@@ -4,11 +4,17 @@ import { Button } from "./common/components";
 import { MenuView } from "./views";
 import { GameView } from './views';
 import { Checkbox } from "./common/components";
+import { AnswerButton } from './views/AnswerButton';
 import { PopUp } from './views/PopUp';
+import { Quiz } from './views/Quiz';
 
 
 function clickMe() {
     console.log("Button is clicked");
+}
+
+function onClick(answer: string){
+    console.log("AnswerClicked: " + answer)
 }
 
 export function App() {
@@ -25,9 +31,9 @@ export function App() {
             {/* <div>
                 <Checkbox label={"asdsd"} checked={checked} onChecked={setChecked} />
             </div> */}
-            {<PopUp>
-                Lorep Pimpsum 
-            </PopUp>}
+            <PopUp>
+                <Quiz question='Ile mam lat' answers={["1", "10", "21", "1000"]} onClick = {onClick}/>
+            </PopUp>
         </div>
     );
 }
