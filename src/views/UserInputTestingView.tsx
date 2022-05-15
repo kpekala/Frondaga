@@ -2,7 +2,7 @@ import './UserInputTestingView.scss';
 
 import * as React from 'react';
 import { UserLineInput } from '../userLineInput/UserLineInput';
-import { Grid } from '../grid/Grid';
+import { Grid } from './Grid';
 import { useInputContext } from '../inputContext/inputContext';
 import { useEffect } from 'react';
 import { GameplayService } from '../services/gameplayService';
