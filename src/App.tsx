@@ -4,6 +4,7 @@ import { Button } from "./common/components";
 import { MenuView } from "./views";
 import { GameView } from './views';
 import { Checkbox } from "./common/components";
+import { PopUp } from './views/PopUp';
 
 
 function clickMe() {
@@ -15,15 +16,18 @@ export function App() {
     
     return (
         <div>
-            <h1>Hello! Urodaga here</h1>
-            <MenuView />
-            <GameView />
-            <Button onClick={clickMe}>
+            {/* <h1>Hello! Urodaga here</h1> */}
+            {/* <MenuView /> */}
+            {/* <GameView /> */}
+            {/* <Button onClick={clickMe}>
                 Click me!
-            </Button>
-            <div>
+            </Button> */}
+            {/* <div>
                 <Checkbox label={"asdsd"} checked={checked} onChecked={setChecked} />
-            </div>
+            </div> */}
+            {<PopUp>
+                Lorep Pimpsum 
+            </PopUp>}
         </div>
     );
 }
