@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { MenuButton } from "./MenuButton";
 import { View } from "./View";
 import { PlayPopUp } from './PlayPopUp';
-import { PopUp } from '../common/components/PopUp';
 import { GameplayService, Player } from '../services/gameplay';
 
 import './MenuView.scss';
 import { GameCancelledMessage, GameStartedMessage, PlayerListMessage } from '../services/gameplay/incoming';
+import { GeneralPopUp } from '../common/components/GeneralPopUp';
 
 export interface MenuViewProps {
     children: React.ReactNode;
@@ -35,11 +35,17 @@ export function MenuView() {
             ></PlayPopUp>
         ),
         options: () => <></>,
-        waitingForGame: () => <PopUp>
-            <ol>
-                {players.map(player => <li>{player.name}</li>)}
-            </ol>
-        </PopUp>
+        waitingForGame: () => (
+            <GeneralPopUp blockBackground style={{
+                minWidth: '70vw',
+                minHeight: '70vh',
+            }}>
+                <h2>Gracze:</h2>
+                <ol>
+                    {players.map(player => <li>{player.name}</li>)}
+                </ol>
+            </GeneralPopUp>
+        )
     };
 
     async function createNewRoom() {

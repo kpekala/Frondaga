@@ -1,18 +1,27 @@
 import * as React from 'react';
-import { Player } from '../services/gameplay';
-import './BottomBar.css'
+import './Bottombar.scss'
 
 export interface BottomBarProps {
-  players: {name: string, points: string, color: string}[]
+  players: PlayerProps[]
+}
+
+export interface PlayerProps {
+  playerName: string, points: number, color: string;
+}
+
+export function Player(props: PlayerProps) {
+  return (<div className='Player'>
+    <div style={{ color: props.color }} className='NameLabel'>{props.playerName}</div>
+    <div className='CounterLabel' >{props.points}</div>
+  </div>);
 }
 
 export function BottomBar(props: BottomBarProps) {
+  const playerViews = props.players.map(p => <Player {...p} />);
+
   return (
     <div className="BottomBar">
-      {
-        props.players.map(player => <Player playerName={player.name} 
-            points={player.points} color={player.color}/>)
-      }
+      {playerViews}
     </div>
   );
 }

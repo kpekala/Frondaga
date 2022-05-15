@@ -4,6 +4,7 @@ import { PlayerListMessage, RoomCreatedMessage } from './incoming';
 
 export class PlayerSocket {
     private socket: WebSocket;
+    private messageQueue: unknown[] = [];
 
     constructor(socket: WebSocket) {
         Logger.debug('Player socket created.');
@@ -17,9 +18,15 @@ export class PlayerSocket {
     defualtMessageHandler(event: WebSocketEventMap['message']) {
         console.warn('Received unsuspecting message... hmmmm');
         console.log(event.data);
+
+        this.messageQueue.push(JSON.parse(event.data));
     }
 
     getMessage<T>(): Promise<T> {
+        if (this.messageQueue.length > 0) {
+            return Promise.resolve(this.messageQueue.splice(0, 1)[0] as T);
+        }
+
         return new Promise((resolve) => {
             this.socket.onmessage = (event) => {
                 console.log(event.data);
@@ -51,7 +58,7 @@ export class PlayerSocket {
 }
 
 export const GameplayService = (() => {
-    let username: string|null = `bruh-${Math.random()}`;
+    let username: string|null = null;
     let socket: PlayerSocket|null = null;
 
     return {

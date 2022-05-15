@@ -2,7 +2,7 @@ import * as React from 'react';
 import { LoginButton } from "./LoginButton";
 import { TextInput } from './TextInput';
 import { View } from "./View";
-import { LogInService } from "../services/logInService";
+import { GameplayService } from "../services/gameplay";
 
 import './LoginView.scss';
 
@@ -14,7 +14,7 @@ export interface LoginViewProps {
 export function LoginView(props: LoginViewProps) {
 
     function validateNickName(nickname: string) {
-        LogInService.setUsername(nickname);
+        GameplayService.setUsername(nickname);
     }
 
     return (
@@ -23,6 +23,7 @@ export function LoginView(props: LoginViewProps) {
                 <span className='logo'>szewc.<span className='letterI'>i</span><span className='letterO'>o</span></span>
                 <TextInput
                     onChange={validateNickName}
+                    onSubmit={() => props.onLogIn()}
                     placeholder='Wpisz swój nick...'
                 ></TextInput>
                 <div className='buttonContainer'>
