@@ -1,15 +1,34 @@
 import * as React from 'react';
-import { Button } from "./common/components";
-import { MenuView } from "./views";
+import { useState } from 'react';
+import { MenuView } from './views';
 
-function clickMe() {
-    console.log("Button is clicked");
+import { LoginView } from './views/LoginView';
+
+enum View {
+    LOGIN,
+    MENU,
+    GAME
 }
 
 export function App() {
-    return (
-        <div>
-            <MenuView></MenuView>
-        </div>
-    );
+    const [view, setView] = useState(View.LOGIN);
+
+    switch (view) {
+        case View.LOGIN:
+            return (
+            <div>
+                <LoginView
+                    onLogIn={() => setView(View.MENU)}
+                ></LoginView>
+            </div>);
+
+        case View.MENU:
+            return (
+                <div>
+                    <MenuView></MenuView>
+                </div>);
+        
+        default:
+            return (<></>);
+    }
 }
