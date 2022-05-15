@@ -26,7 +26,9 @@ export function LoginView(props: LoginViewProps) {
                     placeholder='Wpisz swój nick...'
                 ></TextInput>
                 <div className='buttonContainer'>
-                    <LoginButton onClick={e => props.onLogIn()}> Wejdź </LoginButton>
+                    <LoginButton onClick={e => {
+                        props.onLogIn();
+                    }}> Wejdź </LoginButton>
                 </div>
             </div>
         </View>

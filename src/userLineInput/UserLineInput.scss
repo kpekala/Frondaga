@@ -1,4 +1,6 @@
 .UserLineInput {
+    --UserLineInput__line-thickness: 0.3rem;
+
     position: absolute;
     
     .UserLineInput__dot-cursor {
@@ -21,22 +23,22 @@
         left: 0;
         top: 0;
 
-        width: 0.1rem;
-        height: 0.1rem;
+        width: var(--UserLineInput__line-thickness, 0.1rem);
+        height: var(--UserLineInput__line-thickness, 0.1rem);
         background-color: black;
-        border-radius: 0.05rem;
+        border-radius: calc(var(--UserLineInput__line-thickness, 0.1rem) / 2);
 
         &--right {
             background-color: black;
 
-            margin-top: -0.05rem;
+            margin-top: calc(var(--UserLineInput__line-thickness, 0.1rem) / -2);
             width: var(--cell-size, 10px);
         }
 
         &--down {
             background-color: black;
 
-            margin-left: -0.05rem;
+            margin-left: calc(var(--UserLineInput__line-thickness, 0.1rem) / -2);
             height: var(--cell-size, 10px);
         }
     }

@@ -93,7 +93,6 @@ export function UserLineInput(props: StylableProps) {
                 left: `${lineCenterCoordPx.col}px`,
                 top: `${lineCenterCoordPx.row}px`,
             }}>
-                <div className='UserLineInput__dot-cursor' />
                 <div className={classNames('UserLineInput__line-selection',
                     `UserLineInput__line-selection--${linePosition.dir}`)} />
             </div>)

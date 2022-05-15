@@ -2,6 +2,11 @@
     margin-top: 16px;
     font-size: 0.8em;
     border: 2px solid black;
+
+    &--disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
 }
 
 .SendAnswerButton:hover {

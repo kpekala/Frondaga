@@ -1,33 +1,35 @@
+import './Quiz.scss';
+
 import * as React from 'react';
-import './Quiz.scss'
 import { AnswerButton } from './AnswerButton';
-import { Button } from '_/common/components';
-import { getHooks } from 'html-webpack-plugin';
-import { MenuButton } from './MenuButton';
 import { SendAnswerButton } from './SendAnswerButton';
+import { useState } from 'react';
 
 
 export interface QuizProps {
     answers: string[];
     question: string;
-    onClick: (answer: string) => void;
+    onClick: (answer: number) => void;
 }
 
-function renderAnswers(props: QuizProps, setAnswer: (value: string) => void){
-    const buttons = [];
-    for(const answer of props.answers){
-        buttons.push(<AnswerButton value={answer} onClick={()=> setAnswer(answer)}/>)
-    }
-    return buttons;
+function renderAnswers(props: QuizProps, setAnswer: (value: number) => void) {
+    return props.answers.map((answer, idx) => (
+        <AnswerButton key={idx} value={answer} 
+            onClick={() => setAnswer(props.answers.indexOf(answer))} />
+    ));
 }
 
 export function Quiz(props: QuizProps) {
-    const [answer, setAnswer] = React.useState("none");
+    const [answerIndex, setAnswerIndex] = useState<number|null>(null);
+
     return (
         <div className='Quiz'>
             <label className='Quiz__question'>{props.question}</label>
-            {renderAnswers(props, setAnswer)}
-            <SendAnswerButton onClick={() => props.onClick(answer)}>
+            {renderAnswers(props, setAnswerIndex)}
+            <SendAnswerButton disabled={answerIndex === null} onClick={() => {
+                if (answerIndex !== null)
+                    props.onClick(answerIndex);
+            }}>
                 Zatwierdź
             </SendAnswerButton>
         </div>
