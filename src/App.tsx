@@ -2,9 +2,6 @@ import * as React from 'react';
 import { InputContextProvider } from './inputContext/inputContext';
 import { UserInputTestingView } from './views/UserInputTestingView';
 
-function clickMe() {
-    console.log("Button is clicked");
-}
 
 export function App() {
     return (
