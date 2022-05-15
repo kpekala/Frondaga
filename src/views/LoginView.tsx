@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LoginButton } from "./LoginButton";
-import { LoginInput } from './LoginInput';
+import { TextInput } from './TextInput';
 import { View } from "./View";
 import { LogInService } from "../services/logInService";
 
@@ -21,10 +21,10 @@ export function LoginView(props: LoginViewProps) {
         <View>
             <div className='LoginView'>
                 <span className='logo'>szewc.<span className='letterI'>i</span><span className='letterO'>o</span></span>
-                <LoginInput
-                    onchange={validateNickName}
+                <TextInput
+                    onChange={validateNickName}
                     placeholder='Wpisz swój nick...'
-                ></LoginInput>
+                ></TextInput>
                 <div className='buttonContainer'>
                     <LoginButton onClick={e => props.onLogIn()}> Wejdź </LoginButton>
                 </div>
