@@ -9,6 +9,10 @@ enum View {
     GAME
 }
 
+function onClick(answer: string){
+    console.log("AnswerClicked: " + answer)
+}
+
 export function App() {
     const [view, setView] = useState(View.LOGIN);
 
