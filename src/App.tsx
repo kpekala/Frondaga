@@ -20,8 +20,6 @@ export function App() {
                     onLogIn={() => setView(View.MENU)}
                 ></LoginView>
             </div>);
-
-<<<<<<< HEAD
         case View.MENU:
             return (
                 <div>
@@ -31,16 +29,4 @@ export function App() {
         default:
             return (<></>);
     }
-=======
-            <BottomBar players={
-                [
-                    { name: "kacper", points: "1", color: "red" }, { name: "xxkacper", points: "2x1", color: "green" },
-                    { name: "kacper", points: "1", color: "blue" }, { name: "xxkacper", points: "2x1", color: "yellow" },
-                    { name: "kacper", points: "1", color: "blue" }, { name: "xxkacper", points: "2x1", color: "yellow" },
-                    { name: "kacper", points: "1", color: "blue" }, { name: "xxkacper", points: "2x1", color: "yellow" }
-                ]
-            } />
-        </div>
-    );
->>>>>>> 8418b51 (feat: Make player scores wrap)
 }
