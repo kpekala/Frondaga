@@ -7,7 +7,7 @@ import { Grid } from './Grid';
 export function GameView() {
     return (
         <div className='Game'>
-            <Grid rows={10} cols={10} />
+            <Grid rows={10} cols={10} cellSize={60} />
         </div>
     );
 }

@@ -1,0 +1,43 @@
+.UserLineInput {
+    position: absolute;
+    
+    .UserLineInput__dot-cursor {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        /* Form */
+        width: 0.2rem;
+        height: 0.2rem;        
+        transform: translate(-50%, -50%);
+
+        /* Look */
+        background-color: black;
+        border-radius: 50%;
+    }
+
+    .UserLineInput__line-selection {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        width: 0.1rem;
+        height: 0.1rem;
+        background-color: black;
+        border-radius: 0.05rem;
+
+        &--right {
+            background-color: black;
+
+            margin-top: -0.05rem;
+            width: var(--cell-size, 10px);
+        }
+
+        &--down {
+            background-color: black;
+
+            margin-left: -0.05rem;
+            height: var(--cell-size, 10px);
+        }
+    }
+}

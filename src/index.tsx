@@ -6,7 +6,7 @@ import { LOG_SERVER_PATH, NODE_ENV } from './config';
 import { Logger } from './log';
 import * as log from './log/middlewares';
 
-import './styles/globals.css';
+import './styles/globals.scss';
 
 // Setting up logs
 (() => {

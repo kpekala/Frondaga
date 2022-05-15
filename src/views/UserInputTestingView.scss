@@ -1,0 +1,22 @@
+html {
+    /* Setting a 'rem' unit baseline */
+    font-size: 60px;
+}
+
+.UserInputTestingView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #aaa;
+
+    .UserInputTestingView__grid {
+        flex: 0 0 auto;
+        position: relative;
+        
+        background-color: #fff;
+    }
+}
+

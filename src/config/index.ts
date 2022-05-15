@@ -1,12 +1,15 @@
-function requireDefined(value: string|undefined): string {
+function requireDefined(value: string|undefined, errorMessage?: string): string {
     if (value === undefined) {
-        throw new Error('Failed the require defined check.');
+        throw new Error(errorMessage || 'Failed the require defined check.');
     }
 
     return value as string;
 }
 
 export const NODE_ENV = requireDefined(process.env.NODE_ENV) as ('development' | 'production');
+
+export const SOCKET_URL = requireDefined(process.env.SOCKET_URL, `SOCKET_URL is required`);
+
 
 export const LOG_SERVER_PATH = (() => {
     const baseUrl = process.env.LOGGING_SERVER_BASEURL;

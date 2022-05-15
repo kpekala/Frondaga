@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { useState } from 'react';
 import { MenuView } from './views';
 import { LoginView } from './views/LoginView';
@@ -7,10 +8,6 @@ enum View {
     LOGIN,
     MENU,
     GAME
-}
-
-function onClick(answer: string){
-    console.log("AnswerClicked: " + answer)
 }
 
 export function App() {

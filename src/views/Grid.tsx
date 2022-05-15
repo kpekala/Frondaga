@@ -4,12 +4,16 @@ import './Grid.css';
 interface GridProps {
     rows: number;
     cols: number;
+    cellSize: number;
 }
 
-function renderRow(columnsSize: number) {
+function renderRow(cols: number, cellSize: number) {
     const squares = [];
-    for (let i = 0; i < columnsSize; i++) {
-        squares.push(<div className="Square" />);
+    for (let i = 0; i < cols; i++) {
+        squares.push(<div className="Square" style={{
+            width: `${cellSize + 1}px`,
+            height: `${cellSize + 1}px`,
+        }} />);
     }
 
     return (
@@ -19,25 +23,15 @@ function renderRow(columnsSize: number) {
     );
 }
 
-export class Grid extends React.Component<GridProps>{
-    constructor(props: GridProps) {
-        super(props);
+export function Grid(props: GridProps) {
+    const rows = [];
+    for (let i = 0; i < props.rows; i++) {
+        rows.push(renderRow(props.cols, props.cellSize));
     }
 
-    renderGrid(rowSize: number, columnsSize: number) {
-        const rows = [];
-        for (let i = 0; i < rowSize; i++) {
-            rows.push(renderRow(columnsSize));
-        }
-
-        return rows;
-    }
-
-    render() {
-        return (
-            <div className='Grid'>
-                {this.renderGrid(this.props.rows, this.props.cols)}
-            </div>
-        );
-    }
+    return (
+        <div className='Grid'>
+            {rows}
+        </div>
+    );
 }
