@@ -1,28 +1,31 @@
-.PlayPopUp {
+.TutorialPopUp {
     background-color: #474747ad;
 
     position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    width: 100vw;
-    height: 100vh;
-
-    left: 0;
-    top: 0;
 }
 
-.PlayPopUp__inner {
+.TutorialPopUp__inner {
     position: relative;
 
     background-color: white;
 
     border-radius: 20px;
+
     width: 70%;
-    height: auto;
+    height: 70%;
+
+    padding: 16px;
 }
 
 .escapeButton {

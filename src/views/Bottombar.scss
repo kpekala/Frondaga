@@ -1,0 +1,16 @@
+.Player{
+    color: white;
+    text-align: center;
+}
+
+.BottomBar{
+    position: absolute;
+    bottom: 0;
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background-color: black;
+}

@@ -1,0 +1,45 @@
+.UserLineInput {
+    --UserLineInput__line-thickness: 0.3rem;
+
+    position: absolute;
+    
+    .UserLineInput__dot-cursor {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        /* Form */
+        width: 0.2rem;
+        height: 0.2rem;        
+        transform: translate(-50%, -50%);
+
+        /* Look */
+        background-color: black;
+        border-radius: 50%;
+    }
+
+    .UserLineInput__line-selection {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        width: var(--UserLineInput__line-thickness, 0.1rem);
+        height: var(--UserLineInput__line-thickness, 0.1rem);
+        background-color: black;
+        border-radius: calc(var(--UserLineInput__line-thickness, 0.1rem) / 2);
+
+        &--right {
+            background-color: black;
+
+            margin-top: calc(var(--UserLineInput__line-thickness, 0.1rem) / -2);
+            width: var(--cell-size, 10px);
+        }
+
+        &--down {
+            background-color: black;
+
+            margin-left: calc(var(--UserLineInput__line-thickness, 0.1rem) / -2);
+            height: var(--cell-size, 10px);
+        }
+    }
+}
