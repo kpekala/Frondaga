@@ -25,3 +25,11 @@ To build a production-ready build, run:
 ```bash
 npm run build:prod
 ```
+
+## Technical documentation
+#### Technologies
+The frontend part of this project is created in react (mostly typescript). We used webpack to build and manage the code. The design of the app was created in Figma.
+#### Division
+Our product is divided into backend and frontend that communicate through websockets. The way backend API works is described on the backend repository. The websocket address and port are defined as development environment variables.
+#### Structure
+The react components are either whole views or individual, common parts. There are also configuration, logging and service files, as well as styling sheets. All are placed in adequately named directories.
