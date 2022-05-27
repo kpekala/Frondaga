@@ -90,6 +90,7 @@ module.exports = {
         }),
         new Dotenv({
             path: getEnvFilePath(),
+            systemvars: true,
         }),
     ],
     devServer: {
