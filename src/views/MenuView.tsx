@@ -52,7 +52,7 @@ export function MenuView(props: MenuViewProps) {
                 <h4 style={{ textAlign: 'center' }}>{roomToken}</h4>
                 <h2>Gracze:</h2>
                 <ol>
-                    {players.map(player => <li>{player.name}</li>)}
+                    {players.map(player => <li key={player.id}>{player.name}</li>)}
                 </ol>
                 {amIHost && <Button onClick={() => {
                     GameplayService.startGame();

@@ -2,7 +2,7 @@ import { Position } from '../../common';
 import { SOCKET_URL } from '../../config';
 import { Logger } from '../../log';
 import { ActionMessage, GameCancelledMessage, GameStartedMessage, InitialGameState, Move, PlayerListMessage, TokenMessage } from './incoming';
-import { StartGameMessage } from './outgoing';
+import { MoveCommand, StartGameMessage } from './outgoing';
 import { GamePlayer, Player, OccupiedCellData, PlayerEdge, Mode } from './types';
 
 export class PlayerSocket {
@@ -244,14 +244,19 @@ export const GameplayService = (() => {
             const { order, current_player } = await this.getMessage<InitialGameState>();
             playOrder = order;
             currentPlayerId = current_player;
+            console.log(`Got the initial game state: { order: ${playOrder}, current_player: ${current_player}`);
 
             // Getting sequential player moves, the game start or game quit.
-            let isWaiting = true;
+            const isWaiting = true;
             while (isWaiting) {
                 const message = await this.getMessage<ActionMessage>();
                 
-                playOrder = message.order.order;
-                currentPlayerId = message.order.current_player;
+                console.log({
+                    actionMessage: message,
+                });
+
+                playOrder = message.player_order.order;
+                currentPlayerId = message.player_order.current_player;
 
                 if (message.move) {
                     addEdge(message.move);
@@ -264,7 +269,8 @@ export const GameplayService = (() => {
         },
 
         addEdge(start: Position, end: Position): void {
-            this.sendMessage<Move>({
+            this.sendMessage<MoveCommand>({
+                type: 'MOVE',
                 start_point: { x: start.col, y: start.row },
                 end_point: { x: end.col, y: end.row },
                 user: 0,

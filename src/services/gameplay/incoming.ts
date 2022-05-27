@@ -49,7 +49,7 @@ export interface Move {
 export interface ActionMessage {
     move?: Move;
     field?: { point: {x: number, y: number}[] }
-    order: {
+    player_order: {
         order: number[];
         current_player: number;
     };

@@ -8,10 +8,10 @@ import { BottomBar } from './BottomBar';
 import { OccupiedCell } from './OccupiedCell';
 import { GamePlayer, GameplayService, OccupiedCellData, PlayerEdge } from '../services/gameplay';
 import { useEffect, useMemo, useState } from 'react';
-import { InitialGameState } from '../services/gameplay/incoming';
 import { LinePosition, Position } from '../common';
 import { Logger } from '../log';
 import { EdgeVisual } from './EdgeVisual';
+
 
 const mockData: GamePlayer[] = [
     { id: 0, name: "kacper", points: 1, color: "red", is_host: true },
@@ -110,8 +110,8 @@ export function GameBoard(props: GameBoardProps) {
         }}>
             <Grid cellSize={grid?.cellSize || 60} cols={grid?.cols || 0} rows={grid?.rows || 0} />
             <UserLineInput position={linePosition} />
-            {occupiedCellList.map(cell => <OccupiedCell x={cell.x} y={cell.y} color={cell.color}></OccupiedCell>)}
-            {props.edges.map(edge => (<EdgeVisual position={edge.position} color={edge.color} />))}
+            {occupiedCellList.map((cell, idx) => <OccupiedCell key={idx} x={cell.x} y={cell.y} color={cell.color}></OccupiedCell>)}
+            {props.edges.map((edge, idx) => (<EdgeVisual key={idx} position={edge.position} color={edge.color} />))}
         </div>
     );
 }
@@ -125,11 +125,6 @@ export function GameView() {
     const [players, setPlayers] = useState<GamePlayer[]>([]);
     const [cells, setCells] = useState<OccupiedCellData[]>([]);
     const [edges, setEdges] = useState<VisEdge[]>([]);
-
-    useEffect(() => {
-        const initialGameState = GameplayService.getMessage<InitialGameState>();
-        console.log(initialGameState);
-    });
 
     useEffect(() => {
         const removeHandler = GameplayService.subscribeToPlayers(setPlayers);

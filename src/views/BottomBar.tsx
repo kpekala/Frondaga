@@ -15,7 +15,7 @@ export function Player(props: GamePlayer) {
 }
 
 export function BottomBar(props: BottomBarProps) {
-    const playerViews = props.players.map(p => <Player {...p} />);
+    const playerViews = props.players.map(p => <Player key={p.id} {...p} />);
 
     return (
         <div className="BottomBar">

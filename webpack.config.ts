@@ -88,7 +88,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './public/index.html'),
         }),
-        new CleanWebpackPlugin(),
         new Dotenv({
             path: getEnvFilePath(),
         }),
