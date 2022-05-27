@@ -11,7 +11,8 @@ export const NODE_ENV = requireDefined(process.env.NODE_ENV) as ('development' |
 export const SOCKET_URL = (() => {
     const url = requireDefined(process.env.SOCKET_URL, `SOCKET_URL is required`)
     if (url.startsWith('/')) {
-        return `ws://${window.location.host}${url}`
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        return `${protocol}//${window.location.host}${url}`
     }
     return url;
 })();
